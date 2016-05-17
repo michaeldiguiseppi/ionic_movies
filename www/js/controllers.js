@@ -56,56 +56,47 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function ($scope, $stateParams) {
 })
 
-.controller('BrowseCtrl', function ($scope, $cordovaBarcodeScanner, $http) {
+.controller('BrowseCtrl', function ($scope, $cordovaBarcodeScanner, $http, $ionicModal) {
   $scope.scan = function () {
     $cordovaBarcodeScanner.scan()
     .then(function (result) {
+      console.log(result);
           $http({
             method: 'GET',
-            url: 'http://localhost:5001/api/' + result.text,
+            url: 'http://10.2.12.11:3000/api/' + result.text,
           })
           .then(function (data) {
-            $http({
-              method: 'GET',
-              url: 'http://www.omdbapi.com/?t=' + data.DVD_Title,
-            })
-            .then(function (data) {
-              $scope.data = data;
-              console.log(data);
-              $ionicModal.fromTemplateUrl('../templates/result_modal.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-              }).then(function(modal) {
-                $scope.modal = modal;
-              });
-              $scope.openModal = function() {
-                $scope.modal.show();
-              };
-              $scope.closeModal = function() {
-                $scope.modal.hide();
-              };
-              // Cleanup the modal when we're done with it!
-              $scope.$on('$destroy', function() {
-                $scope.modal.remove();
-              });
-              // Execute action on hide modal
-              $scope.$on('modal.hidden', function() {
-                // Execute action
-              });
-              // Execute action on remove modal
-              $scope.$on('modal.removed', function() {
-                // Execute action
-              });
-            });
-          });
+            console.log(data);
 
-          // alert('We got a barcode\n' +
-          //     'Result: ' + result.text + '\n' +
-          //     'Format: ' + result.format + '\n' +
-          //     'Cancelled: ' + result.cancelled);
-        })
-    .catch(function (error) {
-        alert('Scanning failed: ' + error);
+            alert(JSON.stringify(data.data));
+              // $ionicModal.fromTemplateUrl('templates/result_modal.html', {
+              //   scope: $scope,
+              //   animation: 'slide-in-up'
+              // }).then(function(modal) {
+              //   $scope.modal = modal;
+              // });
+              // $scope.openModal = function() {
+              //   $scope.modal.show();
+              // };
+              // $scope.closeModal = function() {
+              //   $scope.modal.hide();
+              // };
+              // // Cleanup the modal when we're done with it!
+              // $scope.$on('$destroy', function() {
+              //   $scope.modal.remove();
+              // });
+              // // Execute action on hide modal
+              // $scope.$on('modal.hidden', function() {
+              //   // Execute action
+              // });
+              // // Execute action on remove modal
+              // $scope.$on('modal.removed', function() {
+              //   // Execute action
+              // });
+            })
+        .catch(function (error) {
+          alert('Scanning failed: ' + error);
+        });
       });
-  };
+    };
 });
