@@ -3,7 +3,13 @@
     <h1 class="title">Results</h1>
   </ion-header-bar>
   <ion-content>
-    DATA!
-    {{ data }}
+    Results for {{ data.Title }}
+    <hr />
+    <ul>
+      <li ng-repeat="(key, value) in data">
+        <strong>{{ key }}:</strong> {{ value }}
+      </li>
+    </ul>
+    <button class="button button-block button-balanced" ng-click="closeModal()">Close</button>
   </ion-content>
 </ion-modal-view>
