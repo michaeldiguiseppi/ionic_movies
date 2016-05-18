@@ -41,12 +41,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.scan', {
+      url: '/scan',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html',
-          controller: 'BrowseCtrl',
+          templateUrl: 'js/scanner/scanner.template.html',
+          controller: 'ScanCtrl',
         }
       }
     })
