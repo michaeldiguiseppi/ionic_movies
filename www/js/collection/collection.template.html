@@ -1,5 +1,14 @@
 <ion-view view-title="My Collection" ng-init="getMovies()">
   <ion-content>
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search">
+      </label>
+      <button class="button">
+        Cancel
+      </button>
+    </div>
     <div ng-if="message" class="alert alert-{{message.status}}">
       {{ message.data }}
     </div>
