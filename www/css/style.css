@@ -1,1 +1,14 @@
 /* Empty. Add your own CSS if you like */
+.alert {
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 21px;
+}
+
+.alert-success {
+  background-color: #3fb618;
+}
+
+.alert-danger {
+  background-color: #ff0039;
+}

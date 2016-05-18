@@ -5,6 +5,10 @@
   <ion-content>
     Results for {{ data.Title }}
     <hr />
+    <div ng-if="message" class="alert alert-{{ message.status }}">
+      {{ message.data }}
+    </div>
+    <img ng-src="{{data.Poster}}" alt="poster" />
     <ul>
       <li ng-repeat="(key, value) in data">
         <strong>{{ key }}:</strong> {{ value }}

@@ -31,8 +31,8 @@
         console.log(result);
         $http({
           method: 'GET',
-          // sub out IP from school when running at Galvanize
-          url: 'http://192.168.1.231:3000/api/' + result.text,
+          // url: 'http://192.168.1.231:3000/api/' + result.text,
+          url: 'http://10.2.12.11:3000/api/' + result.text,
         })
         .then(function (data) {
           console.log(data);
@@ -48,15 +48,15 @@
 
     $scope.addCollection = function() {
       var data = $scope.data;
-      console.log('This is data: ', data);
       $http({
         method: 'POST',
-        url: 'http://192.168.1.231:3000/api/insert',
+        // url: 'http://192.168.1.231:3000/api/insert',
+        url: 'http://10.2.12.11:3000/api/insert',
         data: data,
       }).then(function() {
-        $scope.message = 'Movie added successfully.';
+        $scope.message = {status: 'success', data: 'Movie added successfully.' };
       }).catch(function(err) {
-        console.log(err);
+        $scope.message = {status: 'danger', data: err };
       });
     };
   });
