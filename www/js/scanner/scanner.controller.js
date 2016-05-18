@@ -54,7 +54,7 @@
         url: 'http://10.2.12.11:3000/api/insert',
         data: data,
       }).then(function() {
-        $state.go('app.collection');
+        $scope.message = {status: 'success', data: 'Movie added successfully.'};
         $scope.closeModal();
       }).catch(function(err) {
         $scope.message = {status: 'danger', data: err };

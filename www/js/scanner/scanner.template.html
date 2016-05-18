@@ -1,5 +1,10 @@
 <ion-view view-title="Scan Barcode">
   <ion-content>
+    <div ng-if="message" class="alert alert-{{message.status}}">
+      <p>
+        {{ message.data }}
+      </p>
+    </div>
     <button ng-click="scan()" class="button button-block button-positive">Scan</button>
   </ion-content>
 </ion-view>
