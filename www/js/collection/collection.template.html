@@ -1,0 +1,15 @@
+<ion-view view-title="My Collection" ng-init="getMovies()">
+  <ion-content>
+    <div ng-if="message" class="alert alert-{{message.status}}">
+      {{ message.data }}
+    </div>
+    <!-- <button class="button button-block button-calm" ng-click="getMovies()">Get Movies</button> -->
+    <ion-list>
+      <ion-item ng-repeat="movie in movies" href="#/app/collection/{{movie.Title}}">
+        <p>
+          {{ movie.Title }}
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
