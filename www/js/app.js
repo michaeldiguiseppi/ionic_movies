@@ -41,6 +41,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   })
 
+  .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/auth/login.template.html',
+        controller: 'LoginCtrl',
+      }
+    }
+  })
+
+  .state('app.register', {
+    url: '/register',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/auth/register.template.html',
+        controller: 'RegisterCtrl',
+      }
+    }
+  })
+
   .state('app.scan', {
       url: '/scan',
       views: {
