@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
       console.log(result);
       $http({
         method: 'GET',
-        url: 'http://10.2.12.11:3000/api/' + result.text,
+        url: 'http://192.168.1.231:3000/api/' + result.text,
       })
       .then(function (data) {
         console.log(data);
