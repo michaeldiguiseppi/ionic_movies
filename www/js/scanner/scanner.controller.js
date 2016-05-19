@@ -1,6 +1,6 @@
 (function() {
   angular.module('starter.controllers')
-  .controller('ScanCtrl', function ($scope, $cordovaBarcodeScanner, $http, $ionicModal, $state) {
+  .controller('ScanCtrl', function ($scope, $cordovaBarcodeScanner, httpService, $ionicModal, $state) {
     $scope.scan = function () {
       $ionicModal.fromTemplateUrl('js/scanner/result_modal.html', {
         scope: $scope,
@@ -28,16 +28,9 @@
       });
       $cordovaBarcodeScanner.scan()
       .then(function (result) {
-        console.log(result);
-        $http({
-          method: 'GET',
-          // url: 'http://192.168.1.231:3000/api/' + result.text,
-          url: 'http://10.2.12.11:3000/api/' + result.text,
-        })
+        httpService.getMovieTitle(result.text)
         .then(function (data) {
-          console.log(data);
           $scope.data = data.data;
-          // alert(JSON.stringify(data.data));
           $scope.openModal();
         })
         .catch(function (error) {
@@ -48,12 +41,8 @@
 
     $scope.addCollection = function() {
       var data = $scope.data;
-      $http({
-        method: 'POST',
-        // url: 'http://192.168.1.231:3000/api/insert',
-        url: 'http://10.2.12.11:3000/api/insert',
-        data: data,
-      }).then(function() {
+      httpService.addMovie(data)
+      .then(function() {
         $scope.message = {status: 'success', data: 'Movie added successfully.'};
         $scope.closeModal();
       }).catch(function(err) {
