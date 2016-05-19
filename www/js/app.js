@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'js/search/search.template.html',
+        controller: 'SearchCtrl',
       }
     }
   })
@@ -47,6 +48,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       'menuContent': {
         templateUrl: 'js/auth/login.template.html',
         controller: 'LoginCtrl',
+      }
+    }
+  })
+
+  .state('app.logout', {
+    url: '/logout',
+    views: {
+      'menuContent': {
+        controller: 'LoginCtrl',
+      }
+    }
+  })
+
+  .state('app.streaming', {
+    url: '/streaming',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/streaming/streaming.template.html',
+        controller: 'StreamCtrl',
       }
     }
   })
