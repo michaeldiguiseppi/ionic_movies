@@ -1,5 +1,26 @@
-<ion-view view-title="{{movie.Title}}">
+<ion-view view-title="Details">
   <ion-content>
-    {{movie.Title}}
+    <h2 class="text-center">{{ movie.Title }}</h2>
+    <div class="row">
+      <div class="col">
+        <img class="padding-horizontal poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'"/>
+        <h4 ng-if="movie.Poster === 'N/A'">Poster not available.</h4>
+      </div>
+    </div>
+    <div class="details">
+      <ul>
+        <li ng-repeat="(key, value) in movie">
+          <hr />
+          <h4><strong>{{ key }}</strong></h4>
+          <p>
+            {{ value }}
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <a class="button button-block button-royal padding" href="#/app/streaming">Find Streaming Sources</a>
+      <button class="button button-block button-assertive padding" ng-click="">Remove from Collection</button>
+    </div>
   </ion-content>
 </ion-view>
