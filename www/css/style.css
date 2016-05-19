@@ -21,8 +21,12 @@ div.bar.bar-header.item-input-inset {
   text-align: center;
 }
 
+.indented {
+  text-indent: 50px;
+}
+
 .poster {
-  padding-left: 25px;
+  height: 250px;
 }
 
 .details {
