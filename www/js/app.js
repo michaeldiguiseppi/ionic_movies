@@ -62,7 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   })
 
   .state('app.streaming', {
-    url: '/streaming',
+    url: '/streaming/:id',
     views: {
       'menuContent': {
         templateUrl: 'js/streaming/streaming.template.html',
