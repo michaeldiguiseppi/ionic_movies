@@ -1,25 +1,31 @@
 <ion-view view-title="Details">
   <ion-content>
-    <h2 class="text-center">{{ movie.Title }}</h2>
     <div class="row">
+      <div class="col col-50">
+        <img class="padding poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'"/>
+      </div>
       <div class="col">
-        <img class="padding-horizontal poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'"/>
-        <h4 ng-if="movie.Poster === 'N/A'">Poster not available.</h4>
+        <h4 class="padding-horizontal">{{ movie.Title }}</h4>
+        <p class="padding-horizontal">
+          <strong>Rated:</strong> {{ movie.Rated }}<br />
+          <strong>Runtime:</strong> {{ movie.Runtime }}<br />
+          <strong>Cast:</strong> {{ movie.Actors }}<br />
+          <strong>Genres:</strong> {{ movie.Genre }}<br />
+          <strong>IMDB Rating:</strong> {{ movie.imdbRating }}
+        </p>
       </div>
     </div>
-    <div class="details">
-      <ul>
-        <li ng-repeat="(key, value) in movie">
-          <hr />
-          <h4><strong>{{ key }}</strong></h4>
-          <p>
-            {{ value }}
+    <div class="row">
+      <div class="details">
+        <div class="col">
+          <p class="indented">
+            {{ movie.Plot }}
           </p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
     <div class="buttons">
-      <a class="button button-block button-royal padding" href="#/app/streaming">Find Streaming Sources</a>
+      <a class="button button-block button-royal padding" href="#/app/streaming/{{movie.imdbID}}">Find Streaming Sources</a>
       <button class="button button-block button-assertive padding" ng-click="">Remove from Collection</button>
     </div>
   </ion-content>
