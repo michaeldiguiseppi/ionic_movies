@@ -18,17 +18,23 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/login">
+        <ion-item menu-close href="#/app/login" ng-if="!currentUser">
           Sign-In/Sign-Up
         </ion-item>
+        <ion-item menu-close href="#/app/logout" ng-if="currentUser">
+          Log Out
+        </ion-item>
         <ion-item menu-close href="#/app/search">
-          Search
+          Search Movies
         </ion-item>
         <ion-item menu-close href="#/app/scan">
-          Scan
+          Scan Barcodes
         </ion-item>
         <ion-item menu-close href="#/app/collection">
           My Collection
+        </ion-item>
+        <ion-item menu-close>
+          Random Movie
         </ion-item>
       </ion-list>
     </ion-content>
