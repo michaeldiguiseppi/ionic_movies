@@ -1,0 +1,30 @@
+<ion-view view-title="Search">
+  <ion-content>
+    <div class="alert alert-{{message.status}}" ng-if="message">
+      <p class="text-center">
+        {{ message.data }}
+      </p>
+    </div>
+    <form ng-submit="findMovie()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Search by Title</span>
+          <input type="text" ng-model="search.title">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Search</button>
+        </label>
+      </div>
+    </form>
+    <div class="results" ng-if="result">
+      <h3>Results for {{ lastSearch }}</h3>
+      <img ng-src="{{result.Poster}}" alt="poster"/>
+      <ul>
+        <li ng-repeat="(key, value) in result">
+          <strong>{{ key }}:</strong> {{ value }}
+        </li>
+      </ul>
+      <button class="button button-block button-balanced" ng-click="addCollection()">Add to Collection</button>
+    </div>
+  </ion-content>
+</ion-view>
