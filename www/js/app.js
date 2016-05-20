@@ -61,8 +61,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   })
 
-  .state('app.streaming', {
-    url: '/streaming/:id',
+    .state('app.stream_series', {
+      url: '/streaming/series/:type/:id',
+      views: {
+        'menuContent': {
+          templateUrl: 'js/streaming/streaming_series.template.html',
+          controller: 'StreamCtrl',
+        }
+      }
+    })
+
+  .state('app.stream_movie', {
+    url: '/streaming/movie/:type/:id',
     views: {
       'menuContent': {
         templateUrl: 'js/streaming/streaming.template.html',
@@ -97,6 +107,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         'menuContent': {
           templateUrl: 'js/collection/collection.template.html',
           controller: 'CollectionCtrl'
+        }
+      }
+    })
+
+    .state('app.random', {
+      url: '/random',
+      views: {
+        'menuContent': {
+          templateUrl: 'js/random/random.template.html',
+          controller: 'RandomCtrl'
         }
       }
     })
