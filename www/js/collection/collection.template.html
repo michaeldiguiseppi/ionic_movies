@@ -14,6 +14,9 @@
         <p>
           {{ movie.Title }}
         </p>
+        <ion-option-button class="button-assertive" ng-click="delete(movie.imdbID)">
+          Delete
+        </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -9,5 +9,14 @@
           $scope.message = {status: 'danger', data: err};
         });
       };
+
+      $scope.delete = function(id) {
+        httpService.deleteMovie(id)
+        .then(function(data) {
+          $scope.getMovies();
+        }).catch(function(err) {
+          $scope.message = {status: 'danger', data: err};
+        });
+      };
     }]);
 })();
