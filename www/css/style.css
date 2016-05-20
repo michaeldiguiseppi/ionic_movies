@@ -25,8 +25,9 @@ div.bar.bar-header.item-input-inset {
   text-indent: 50px;
 }
 
-.poster {
+img.poster {
   height: 250px;
+  width: 180px;
 }
 
 .details {
