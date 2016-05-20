@@ -1,8 +1,8 @@
 (function() {
   angular.module('starter')
     .service('httpService', ['$http', '$rootScope', function($http, $rootScope) {
-      // var baseUrl = 'http://10.2.12.11:3000/api';
-      var baseUrl = 'http://192.168.1.231:3000/api';
+      var baseUrl = 'http://10.2.12.11:3000/api';
+      // var baseUrl = 'http://192.168.1.231:3000/api';
       return {
         getAllMovies: function() {
           return $http({
@@ -36,6 +36,7 @@
           });
         },
         deleteMovie: function(id) {
+          // "/:userId/movies/:movieId"
           return $http({
             method: 'PUT',
             url: baseUrl + '/delete/' + id + '/573c015010ea807de45121ac',
