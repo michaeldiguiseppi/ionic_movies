@@ -1,0 +1,25 @@
+<ion-view view-title="Streaming">
+  <ion-content>
+    <div class="row">
+      <div class="col col-50">
+        <img class="padding poster" ng-src="{{movie.artwork_208x117}}" alt="series_poster" ng-if="movie.artwork_208x117 !== 'N/A'" ng-show="movie"/>
+      </div>
+      <div class="col">
+        <h4 class="padding-horizontal">{{ movie.title }}</h4>
+        <p class="padding-horizontal">
+          <strong>Rated:</strong> {{ movie.rating }}<br />
+        </p>
+      </div>
+    </div>
+    <div class="details">
+      <div ng-show="movie.tv_com && movie.url">
+        <p class="text-center">
+          Watch on <a ng-click="GoToLink(movie.tv_com)">TV.com</a>
+        </p>
+        <p class="text-center">
+          Watch on <a ng-click="GoToLink(movie.url)">GuideBox.com</a>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

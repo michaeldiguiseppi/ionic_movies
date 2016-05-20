@@ -2,23 +2,41 @@
   <ion-content>
     <div class="row">
       <div class="col col-50">
-        <img class="padding poster" ng-src="{{movie.poster_240x342}}" alt="poster" ng-if="movie.poster_240x342 !== 'N/A'"/>
+        <img class="padding poster" ng-src="{{movie.poster_240x342}}" alt="poster" ng-if="movie.poster_240x342 !== 'N/A'" ng-show="movie"/>
       </div>
       <div class="col">
         <h4 class="padding-horizontal">{{ movie.title }}</h4>
         <p class="padding-horizontal">
           <strong>Rated:</strong> {{ movie.rating }}<br />
-          <strong>Cast:</strong><span ng-repeat="actor in movie.cast | limitTo: 4">{{ actor.name }},</span><br />
         </p>
       </div>
     </div>
     <div class="details">
-      <h3>Paid Sources</h3>
-      <ul>
-        <li ng-repeat="source in movie.purchase_web_sources">
-          <a class="button button-block margin-horizontal" ng-href="{{source.link}}" target="blank">{{ source.display_name }}</a>
-        </li>
-      </ul>
+      <div ng-show="movie.purchase_web_sources.length">
+        <h3>Paid</h3>
+        <ul>
+          <li ng-repeat="source in movie.purchase_web_sources">
+            <a class="button button-block margin-horizontal" ng-click="GoToLink(source.link)">{{ source.display_name }}</a>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div ng-show="movie.free_web_sources.length">
+        <h3>Free</h3>
+        <ul>
+          <li ng-repeat="source in movie.free_web_sources">
+            <a class="button button-block margin-horizontal" ng-click="GoToLink(source.link)">{{ source.display_name }}</a>
+          </li>
+        </ul>
+      </div>
+      <div ng-show="movie.subscription_web_sources.length">
+        <h3>Subscription</h3>
+        <ul>
+          <li ng-repeat="source in movie.subscription_web_sources">
+            <a class="button button-block margin-horizontal" ng-click="GoToLink(source.link)">{{ source.display_name }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </ion-content>
 </ion-view>
