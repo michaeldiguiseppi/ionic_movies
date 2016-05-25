@@ -6,8 +6,8 @@
         <input type="search" placeholder="Search" ng-model="search">
       </label>
     </div>
-    <div ng-if="message" class="alert alert-{{message.status}}">
-      {{ message.data }}
+    <div ng-if="message.status" class="alert alert-{{message.status}}">
+      <p class="center-text">{{ message.data }}</p>
     </div>
     <ion-list>
       <ion-item ng-repeat="movie in movies | orderBy: 'Title' | filter: search" href="#/app/collection/{{movie.Title}}">
