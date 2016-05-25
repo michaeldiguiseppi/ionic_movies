@@ -29,7 +29,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
   })
 
   .state('app.search', {
@@ -49,6 +48,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         templateUrl: 'js/auth/login.template.html',
         controller: 'LoginCtrl',
       }
+    },
+    data: {
+      blockLogin: true,
     }
   })
 
@@ -58,6 +60,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       'menuContent': {
         controller: 'LoginCtrl',
       }
+    },
+    data: {
+      requireLogin: true,
     }
   })
 
@@ -68,6 +73,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
           templateUrl: 'js/streaming/streaming_series.template.html',
           controller: 'StreamCtrl',
         }
+      },
+      data: {
+        requireLogin: true,
       }
     })
 
@@ -78,6 +86,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         templateUrl: 'js/streaming/streaming.template.html',
         controller: 'StreamCtrl',
       }
+    },
+    data: {
+      requireLogin: true,
     }
   })
 
@@ -88,6 +99,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         templateUrl: 'js/auth/register.template.html',
         controller: 'RegisterCtrl',
       }
+    },
+    data: {
+      blockLogin: true,
     }
   })
 
@@ -108,6 +122,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
           templateUrl: 'js/collection/collection.template.html',
           controller: 'CollectionCtrl'
         }
+      },
+      data: {
+        requireLogin: true,
       }
     })
 
@@ -118,6 +135,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
           templateUrl: 'js/random/random.template.html',
           controller: 'RandomCtrl'
         }
+      },
+      data: {
+        requireLogin: true,
       }
     })
 
@@ -128,8 +148,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         templateUrl: 'js/movie/movie.template.html',
         controller: 'MovieCtrl'
       }
+    },
+    data: {
+      requireLogin: true,
     }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/collection');
+
+  angular.module('myApp')
+    .run(function($rootScope, $state, $window) {
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+        var requireLogin = toState.data.requireLogin;
+        var blockLogin = toState.data.blockLogin;
+        $rootScope.currentUser = $window.localStorage.getItem('user');
+        if (requireLogin && !$rootScope.currentUser) {
+          event.preventDefault();
+          $state.go('app.login');
+        }
+        if (blockLogin && $rootScope.currentUser) {
+          event.preventDefault();
+          $state.go('app.collection');
+        }
+      });
+    });
 });
