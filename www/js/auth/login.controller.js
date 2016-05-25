@@ -11,6 +11,7 @@
 
     // Form data for the login modal
     $scope.loginData = {};
+    $scope.registerData = {};
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function () {
@@ -23,19 +24,8 @@
         $ionicHistory.nextViewOptions(
           { historyRoot: true }
         );
-        $state.go('app.collection');
-      });
-    };
-    $scope.register = function() {
-      $ionicLoading.show();
-      authService.register($scope.registerData).then(function(data) {
-        console.log(data);
-        $ionicLoading.hide();
-        authService.setUserInfo(data);
-        $ionicHistory.nextViewOptions(
-          { historyRoot: true }
-        );
-        $state.go('app.search');
+        $scope.loginData = {};
+        $state.go('app.collection', {reload: true});
       });
     };
   });

@@ -71,6 +71,7 @@
             });
           },
           setUserInfo: function(userData) {
+            console.log('userdata: ', userData);
             $window.localStorage.setItem('user', JSON.stringify(userData.data.message.user));
             $window.localStorage.setItem('token', JSON.stringify(userData.data.message.token));
           },

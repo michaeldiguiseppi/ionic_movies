@@ -28,6 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     .state('app', {
     url: '/app',
     abstract: true,
+    cache: false,
     templateUrl: 'templates/menu.html',
     data: {
       requireLogin: false,
@@ -67,8 +68,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/logout',
     views: {
       'menuContent': {
-        controller: function(authService) {
+        controller: function(authService, $state, $ionicHistory) {
           authService.logout();
+          $ionicHistory.nextViewOptions(
+            { historyRoot: true }
+          );
+          $state.go('app.login', {reload: true});
         },
       }
     },
