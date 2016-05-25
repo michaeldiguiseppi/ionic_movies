@@ -18,25 +18,27 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/login" ng-show="!currentUser">
-          Sign-In/Sign-Up
-        </ion-item>
-        <ion-item menu-close href="#/app/logout" ng-show="currentUser">
-          Log Out
-        </ion-item>
         <ion-item menu-close href="#/app/search">
           Search Titles
         </ion-item>
         <ion-item menu-close href="#/app/scan">
           Scan Barcodes
         </ion-item>
-        <ion-item menu-close href="#/app/collection">
+        <ion-item menu-close href="#/app/collection" ng-show="currentUser">
           My Collection
         </ion-item>
-        <ion-item menu-close href="#/app/random">
+        <ion-item menu-close href="#/app/random" ng-show="currentUser">
           Random Title
         </ion-item>
       </ion-list>
     </ion-content>
+    <ion-footer-bar class="bar-stable">
+      <ion-item menu-close href="#/app/login" ng-show="!currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: 5px; position: fixed;">
+        Sign In
+      </ion-item>
+      <ion-item menu-close href="#/app/logout" ng-show="currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: 5px; position: fixed;">
+        Sign Out
+      </ion-item>
+    </ion-footer-bar>
   </ion-side-menu>
 </ion-side-menus>
