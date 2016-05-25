@@ -1,37 +1,36 @@
 (function() {
   angular.module('starter')
     .service('httpService', ['$http', '$rootScope', function($http, $rootScope) {
-      var baseUrl = 'http://10.2.12.11:3000/api';
-      // var baseUrl = 'http://192.168.1.231:3000/api';
+      var baseUrl = 'http://mmdb-api.herokuapp.com';
       return {
         getAllMovies: function() {
           return $http({
             method: 'GET',
-            url: baseUrl + '/movies',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movies',
           });
         },
         getOneMovie: function(title) {
           return $http({
             method: 'GET',
-            url: baseUrl + '/movie/' + title,
+            url: baseUrl + '/movies/find/' + title,
           });
         },
         getStreamingSources: function(id, type) {
           return $http({
             method: 'GET',
-            url: baseUrl + '/streaming/' + id + '/' + type
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/streaming/' + id + '/' + type
           });
         },
         getMovieTitle: function(upc) {
           return $http({
             method: 'GET',
-            url: baseUrl + '/' + upc,
+            url: baseUrl + '/movies/' + upc,
           });
         },
         addMovie: function(data) {
           return $http({
             method: 'POST',
-            url: baseUrl + '/insert',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/add',
             data: data,
           });
         },
@@ -39,9 +38,73 @@
           // "/:userId/movies/:movieId"
           return $http({
             method: 'PUT',
-            url: baseUrl + '/delete/' + id + '/573c015010ea807de45121ac',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/'+id+'/delete',
           });
         }
       };
+    }])
+    .service('authService', ['$http', '$window', function($http, $window) {
+      var user = {};
+      return {
+        login: function(user) {
+          return $http({
+            method: 'POST',
+            url: '/auth/login',
+            data: user
+          });
+        },
+        logout: function(user) {
+          user = null;
+          $window.localStorage.clear();
+        },
+        register: function(user) {
+          return $http({
+            method: 'POST',
+            url: '/auth/register',
+            data: user
+          });
+        },
+        setUserInfo: function(userData) {
+          $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
+          $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
+        },
+        getUserInfo: function() {
+          $window.localStorage.getItem('user');
+        }
+      };
     }]);
+    /*
+
+    app.service('authService', ['$http', '$window', function($http, $window) {
+  var user = {};
+  return {
+    login: function(user) {
+      return $http({
+        method: 'POST',
+        url: '/auth/login',
+        data: user
+      });
+    },
+    logout: function(user) {
+      user = null;
+      $window.localStorage.clear();
+    },
+    register: function(user) {
+      return $http({
+        method: 'POST',
+        url: '/auth/register',
+        data: user
+      });
+    },
+    setUserInfo: function(userData) {
+      $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
+      $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
+    },
+    getUserInfo: function() {
+      $window.localStorage.getItem('user');
+    }
+  };
+}]);
+
+    */
 })();
