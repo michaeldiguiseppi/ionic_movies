@@ -1,0 +1,22 @@
+<ion-view view-title="Password Reset">
+  <ion-content>
+    <form ng-submit="resetPass()">
+      <div ng-if="message.status" class="alert alert-{{message.status}}">
+        <p class="center-text">{{ message.data }}</p>
+      </div>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="passData.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">New Password</span>
+          <input type="password" ng-model="passData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Reset</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

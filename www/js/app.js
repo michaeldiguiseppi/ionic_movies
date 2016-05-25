@@ -64,6 +64,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   })
 
+  .state('app.forgot_pass', {
+    url: '/forgot_pass',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/auth/forgot_pass.template.html',
+        controller: 'LoginCtrl',
+      }
+    },
+    data: {
+      blockLogin: true,
+      requireLogin: false,
+    }
+  })
+
   .state('app.logout', {
     url: '/logout',
     views: {
@@ -80,6 +94,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     data: {
       requireLogin: true,
       blockLogin: false,
+    }
+  })
+
+  .state('app.register', {
+    url: '/register',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/auth/register.template.html',
+        controller: 'RegisterCtrl',
+      }
+    },
+    data: {
+      blockLogin: true,
+      requireLogin: false,
     }
   })
 
@@ -108,20 +136,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     data: {
       requireLogin: true,
       blockLogin: false,
-    }
-  })
-
-  .state('app.register', {
-    url: '/register',
-    views: {
-      'menuContent': {
-        templateUrl: 'js/auth/register.template.html',
-        controller: 'RegisterCtrl',
-      }
-    },
-    data: {
-      blockLogin: true,
-      requireLogin: false,
     }
   })
 

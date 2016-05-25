@@ -11,7 +11,7 @@
 
     // Form data for the login modal
     $scope.loginData = {};
-    $scope.registerData = {};
+    $scope.passData = {};
     $scope.message = {};
 
     // Perform the login action when the user submits the login form
@@ -35,6 +35,10 @@
           data: 'Email and/or password are incorrect.  Please try again.'
         };
       });
+    };
+
+    $scope.resetPass = function() {
+      console.log($scope.passData);
     };
   });
 })();
