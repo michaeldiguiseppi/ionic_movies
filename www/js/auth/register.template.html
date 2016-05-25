@@ -1,6 +1,9 @@
 <ion-view view-title="Register">
   <ion-content>
     <form ng-submit="doRegister()">
+      <div ng-if="message.status" class="alert alert-{{message.status}}">
+        <p class="center-text">{{ message.data }}</p>
+      </div>
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Username</span>
