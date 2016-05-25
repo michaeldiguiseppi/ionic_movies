@@ -43,68 +43,40 @@
         }
       };
     }])
-    .service('authService', ['$http', '$window', function($http, $window) {
-      var user = {};
-      return {
-        login: function(user) {
-          return $http({
-            method: 'POST',
-            url: '/auth/login',
-            data: user
-          });
-        },
-        logout: function(user) {
-          user = null;
-          $window.localStorage.clear();
-        },
-        register: function(user) {
-          return $http({
-            method: 'POST',
-            url: '/auth/register',
-            data: user
-          });
-        },
-        setUserInfo: function(userData) {
-          $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
-          $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
-        },
-        getUserInfo: function() {
-          $window.localStorage.getItem('user');
-        }
-      };
+    .service('authService', ['$http', '$window', '$ionicHistory', '$timeout',
+      function($http, $window, $ionicHistory, $timeout) {
+        var user = {};
+        var baseUrl = 'http://mmdb-api.herokuapp.com';
+        return {
+          login: function(user) {
+            return $http({
+              method: 'POST',
+              url: baseUrl + '/auth/login',
+              data: user
+            });
+          },
+          logout: function(user) {
+            user = null;
+            $window.localStorage.clear();
+            $timeout(function () {
+                $ionicHistory.clearCache();
+                $ionicHistory.clearHistory();
+            },1000);
+          },
+          register: function(user) {
+            return $http({
+              method: 'POST',
+              url: baseUrl + '/auth/register',
+              data: user
+            });
+          },
+          setUserInfo: function(userData) {
+            $window.localStorage.setItem('user', JSON.stringify(userData.data.message.user));
+            $window.localStorage.setItem('token', JSON.stringify(userData.data.message.token));
+          },
+          getUserInfo: function() {
+            $window.localStorage.getItem('user');
+          }
+        };
     }]);
-    /*
-
-    app.service('authService', ['$http', '$window', function($http, $window) {
-  var user = {};
-  return {
-    login: function(user) {
-      return $http({
-        method: 'POST',
-        url: '/auth/login',
-        data: user
-      });
-    },
-    logout: function(user) {
-      user = null;
-      $window.localStorage.clear();
-    },
-    register: function(user) {
-      return $http({
-        method: 'POST',
-        url: '/auth/register',
-        data: user
-      });
-    },
-    setUserInfo: function(userData) {
-      $window.localStorage.setItem('user', JSON.stringify(userData.data.data.user));
-      $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
-    },
-    getUserInfo: function() {
-      $window.localStorage.getItem('user');
-    }
-  };
-}]);
-
-    */
 })();
