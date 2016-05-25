@@ -18,10 +18,10 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/login" ng-if="!currentUser">
+        <ion-item menu-close href="#/app/login" ng-show="!currentUser">
           Sign-In/Sign-Up
         </ion-item>
-        <ion-item menu-close href="#/app/logout" ng-if="currentUser">
+        <ion-item menu-close href="#/app/logout" ng-show="currentUser">
           Log Out
         </ion-item>
         <ion-item menu-close href="#/app/search">

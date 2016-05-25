@@ -29,6 +29,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
+    data: {
+      requireLogin: false,
+      blockLogin: false,
+    }
   })
 
   .state('app.search', {
@@ -38,6 +42,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         templateUrl: 'js/search/search.template.html',
         controller: 'SearchCtrl',
       }
+    },
+    data: {
+      requireLogin: false,
+      blockLogin: false,
     }
   })
 
@@ -51,6 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     },
     data: {
       blockLogin: true,
+      requireLogin: false,
     }
   })
 
@@ -58,11 +67,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/logout',
     views: {
       'menuContent': {
-        controller: 'LoginCtrl',
+        controller: function(authService) {
+          authService.logout();
+        },
       }
     },
     data: {
       requireLogin: true,
+      blockLogin: false,
     }
   })
 
@@ -76,6 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       },
       data: {
         requireLogin: true,
+        blockLogin: false,
       }
     })
 
@@ -89,6 +102,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     },
     data: {
       requireLogin: true,
+      blockLogin: false,
     }
   })
 
@@ -102,6 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     },
     data: {
       blockLogin: true,
+      blockLogin: false,
     }
   })
 
@@ -112,6 +127,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
           templateUrl: 'js/scanner/scanner.template.html',
           controller: 'ScanCtrl',
         }
+      },
+      data: {
+        requireLogin: false,
+        blockLogin: false,
       }
     })
     .state('app.collection', {
@@ -125,6 +144,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       },
       data: {
         requireLogin: true,
+        blockLogin: false,
       }
     })
 
@@ -138,6 +158,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       },
       data: {
         requireLogin: true,
+        blockLogin: false,
       }
     })
 
@@ -151,25 +172,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     },
     data: {
       requireLogin: true,
+      blockLogin: false,
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/collection');
-
-  angular.module('myApp')
-    .run(function($rootScope, $state, $window) {
-      $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-        var requireLogin = toState.data.requireLogin;
-        var blockLogin = toState.data.blockLogin;
-        $rootScope.currentUser = $window.localStorage.getItem('user');
-        if (requireLogin && !$rootScope.currentUser) {
-          event.preventDefault();
-          $state.go('app.login');
-        }
-        if (blockLogin && $rootScope.currentUser) {
-          event.preventDefault();
-          $state.go('app.collection');
-        }
-      });
-    });
+  $urlRouterProvider.otherwise('/app/login');
 });
+
+angular.module('starter')
+  .run(function($rootScope, $state, $window) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+      var requireLogin = toState.data.requireLogin;
+      var blockLogin = toState.data.blockLogin;
+      $rootScope.currentUser = JSON.parse($window.localStorage.getItem('user'));
+      if (requireLogin && !$rootScope.currentUser) {
+        event.preventDefault();
+        $state.go('app.login');
+      }
+      if (blockLogin && $rootScope.currentUser) {
+        event.preventDefault();
+        $state.go('app.collection');
+      }
+    });
+  });
