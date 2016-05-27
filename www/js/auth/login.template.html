@@ -2,7 +2,7 @@
   <ion-content>
     <form ng-submit="doLogin()">
       <div ng-if="message.status" class="alert alert-{{message.status}}">
-        <p class="center-text">{{ message.data }}</p>
+        <p class="text-center">{{ message.data }}</p>
       </div>
       <div class="list">
         <label class="item item-input">
@@ -15,9 +15,7 @@
         </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Log in</button>
-          <p class="col text-center">Forgot password? Reset it <a href="#/app/forgot_pass">here!</a></p>
         </label>
-
       </div>
     </form>
     <p class="col col-50 col-offset-25 text-center">Don't have an account?  Sign up <a href="#/app/register">here!</a></p>

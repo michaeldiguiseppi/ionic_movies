@@ -17,14 +17,16 @@
       </div>
     </form>
     <div class="results" ng-if="result">
-      <h3>Results for {{ lastSearch }}</h3>
+      <h3>Results for:</h3>
+      <h4>{{ lastSearch }}</h4>
       <img ng-src="{{result.Poster}}" alt="poster"/>
       <ul>
         <li ng-repeat="(key, value) in result">
           <strong>{{ key }}:</strong> {{ value }}
         </li>
       </ul>
-      <button class="button button-block button-balanced" ng-click="addCollection()">Add to Collection</button>
+      <button class="button button-block button-balanced" ng-click="addCollection()" ng-show="currentUser">Add to Collection</button>
+      <a class="button button-block button-balanced" href="#/app/login" ng-show="!currentUser">Log in to add this to your collection.</a>
     </div>
   </ion-content>
 </ion-view>
