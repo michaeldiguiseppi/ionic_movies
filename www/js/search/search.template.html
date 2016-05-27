@@ -17,14 +17,31 @@
       </div>
     </form>
     <div class="results" ng-if="result">
-      <h3>Results for:</h3>
-      <h4>{{ lastSearch }}</h4>
-      <img ng-src="{{result.Poster}}" alt="poster"/>
-      <ul>
-        <li ng-repeat="(key, value) in result">
-          <strong>{{ key }}:</strong> {{ value }}
-        </li>
-      </ul>
+      <h3 class="padding-horizontal">Your search: {{ lastSearch }}</h3>
+      <div class="row">
+        <div class="col col-50">
+          <img class="padding poster" ng-src="{{result.Poster}}" alt="poster" ng-if="result.Poster !== 'N/A'" ng-show="result"/>
+        </div>
+        <div class="col">
+          <h4 class="padding-horizontal">{{ result.Title }}</h4>
+          <p class="padding-horizontal">
+            <strong>Rated:</strong> {{ result.Rated }}<br />
+            <strong>Runtime:</strong> {{ result.Runtime }}<br />
+            <strong>Cast:</strong> {{ result.Actors }}<br />
+            <strong>Genres:</strong> {{ result.Genre }}<br />
+            <strong>IMDB Rating:</strong> {{ result.imdbRating }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="details">
+          <div class="col">
+            <p class="indented">
+              {{ result.Plot }}
+            </p>
+          </div>
+        </div>
+      </div>
       <button class="button button-block button-balanced" ng-click="addCollection()" ng-show="currentUser">Add to Collection</button>
       <a class="button button-block button-balanced" href="#/app/login" ng-show="!currentUser">Log in to add this to your collection.</a>
     </div>
