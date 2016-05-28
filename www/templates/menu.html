@@ -17,6 +17,7 @@
       <h1 class="title">MMDB</h1>
     </ion-header-bar>
     <ion-content>
+      <p class="text-center padding-top" ng-show="currentUser">Signed in as {{ currentUser.username }}</p>
       <ion-list>
         <ion-item menu-close href="#/app/search">
           Search Titles
