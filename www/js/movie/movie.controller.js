@@ -20,5 +20,10 @@
           $scope.message = {status: 'danger', data: err};
         });
       };
+
+      // TODO: Find API Routes for related movies/shows
+
+      // TODO: Add correct API routing for finding streaming sources for TV shows.
+      
     }]);
 })();
