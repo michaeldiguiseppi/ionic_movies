@@ -1,5 +1,12 @@
 <ion-view view-title="Details">
   <ion-content>
+    <div class="row" ng-show="message.status">
+      <div class="alert alert-{{message.status}}">
+        <p class="text-center text-dark">
+          {{ message.data }}
+        </p>
+      </div>
+    </div>
     <div class="row">
       <div class="col col-50">
         <img class="padding poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'" ng-show="movie"/>

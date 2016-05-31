@@ -9,7 +9,7 @@
         $scope.movie = data.data;
       }).catch(function(err) {
         $ionicLoading.hide();
-        $scope.message = {status: 'danger', data: err};
+        $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
       });
 
       $scope.delete = function(id) {
@@ -17,13 +17,13 @@
         .then(function(data) {
           $state.go('app.collection');
         }).catch(function(err) {
-          $scope.message = {status: 'danger', data: err};
+          $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
         });
       };
 
       // TODO: Find API Routes for related movies/shows
 
       // TODO: Add correct API routing for finding streaming sources for TV shows.
-      
+
     }]);
 })();
