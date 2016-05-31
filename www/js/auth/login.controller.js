@@ -37,8 +37,5 @@
       });
     };
 
-    $scope.resetPass = function() {
-      console.log($scope.passData);
-    };
   });
 })();
