@@ -1,14 +1,22 @@
 (function() {
   angular.module('starter.controllers')
-    .controller('RandomCtrl', ['$scope', 'httpService', function($scope, httpService) {
-      $scope.$on('$ionicView.enter', function(e) {
+    .controller('RandomCtrl', ['$scope', 'httpService', '$ionicLoading',
+    function($scope, httpService, $ionicLoading) {
+      $scope.getRandom = function() {
         $scope.movie = {};
+        $ionicLoading.show();
         httpService.getAllMovies().then(function(data) {
           var random = Math.floor(Math.random() * data.data.length);
           console.log(data);
           console.log(random);
-          $scope.movie = data.data[random];
+          setTimeout(function() {
+            $ionicLoading.hide();
+            $scope.movie = data.data[random];
+          }, 1000);
+        }).catch(function(err) {
+          $ionicLoading.hide();
+          $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
         });
-      });
+      };
     }]);
 })();

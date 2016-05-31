@@ -1,8 +1,15 @@
-<ion-view view-title="Random">
+<ion-view view-title="Random" ng-init="getRandom()">
   <ion-content>
+    <div class="row" ng-show="message.status">
+      <div class="alert alert-{{message.status}}">
+        <p class="text-center text-dark">
+          {{ message.data }}
+        </p>
+      </div>
+    </div>
     <div class="row">
       <div class="col col-50">
-        <img class="padding poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'" ng-show="movie"/>
+        <img class="padding poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'" ng-show="movie.Poster"/>
       </div>
       <div class="col">
         <h4 class="padding-horizontal">{{ movie.Title }}</h4>
@@ -26,7 +33,7 @@
     </div>
     <div class="buttons">
       <a class="button button-block button-royal padding" href="#/app/streaming/{{movie.Type}}/{{movie.Type}}/{{movie.imdbID}}">Find Streaming Sources</a>
-      <button class="button button-block button-assertive padding" ng-click="delete(movie.imdbID)">Remove from Collection</button>
+      <button class="button button-block button-balanced padding" ng-click="getRandom()">Try Again</button>
     </div>
   </ion-content>
 </ion-view>
