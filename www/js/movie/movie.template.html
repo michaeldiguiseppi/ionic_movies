@@ -31,7 +31,27 @@
         </div>
       </div>
     </div>
+    <div ng-show="related">
+      <div class="row">
+        <h3 class="text-light col col-50 col-offset-25 text-center">Related</h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="related">
+          <ion-slide-box show-pager="false">
+              <ion-slide ng-repeat="movie in related.results">
+                <h4 class="text-center">{{movie.title}}</h4>
+                <a href="#/app/search/{{movie.title}}">
+                  <img class="centered" ng-src="{{movie.poster_240x342}}" alt="movie_poster" ng-if="movie.poster_240x342">
+                  <img class="centered" ng-src="{{movie.artwork_304x171}}" alt="movie_poster" ng-if="movie.artwork_304x171">
+                </a>
+              </ion-slide>
+          </ion-slide-box>
+        </div>
+      </div>
+    </div>
     <div class="buttons">
+      <button class="button button-block button-calm padding" ng-click="doSearch(movie.imdbID, movie.Type)" ng-show="!related.results">Get Related Titles</button>
       <a class="button button-block button-royal padding" href="#/app/streaming/{{movie.Type}}/{{movie.Type}}/{{movie.imdbID}}">Find Streaming Sources</a>
       <button class="button button-block button-assertive padding" ng-click="delete(movie.imdbID)">Remove from Collection</button>
     </div>

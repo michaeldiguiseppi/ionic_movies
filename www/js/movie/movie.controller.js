@@ -1,7 +1,8 @@
 (function() {
   angular.module('starter.controllers')
     .controller('MovieCtrl', ['$scope', 'httpService', '$stateParams', '$ionicLoading', '$state',
-     function ($scope, httpService, $stateParams, $ionicLoading, $state) {
+    '$ionicSlideBoxDelegate', '$ionicScrollDelegate',
+     function ($scope, httpService, $stateParams, $ionicLoading, $state, $ionicSlideBoxDelegate) {
       $ionicLoading.show();
       httpService.getOneMovie($stateParams.title)
       .then(function(data) {
@@ -23,7 +24,18 @@
 
       // TODO: Find API Routes for related movies/shows
 
-      // TODO: Add correct API routing for finding streaming sources for TV shows.
-
+      $scope.doSearch = function(id, type) {
+        $ionicLoading.show();
+        httpService.getRelated(id, type).then(function(results) {
+            console.log(results);
+            $ionicLoading.hide();
+            $scope.related = results.data;
+            setTimeout(function() {
+                $ionicSlideBoxDelegate.slide(0);
+                $ionicSlideBoxDelegate.update();
+                $scope.$apply();
+            });
+        });
+      };
     }]);
 })();
