@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="bar-stable dark">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -13,10 +13,10 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
+    <ion-header-bar class="bar-stable dark">
       <h1 class="title">MMDB</h1>
     </ion-header-bar>
-    <ion-content>
+    <ion-content class="dark">
       <p class="text-center padding-top" ng-show="currentUser">Signed in as {{ currentUser.username }}</p>
       <ion-list>
         <ion-item menu-close href="#/app/search">
@@ -34,10 +34,10 @@
       </ion-list>
     </ion-content>
     <ion-footer-bar class="bar-stable">
-      <ion-item menu-close href="#/app/login" ng-show="!currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: 5px; position: fixed;">
+      <ion-item menu-close href="#/app/login" ng-show="!currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: -5px; position: fixed;">
         Sign In
       </ion-item>
-      <ion-item menu-close href="#/app/logout" ng-show="currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: 5px; position: fixed;">
+      <ion-item menu-close href="#/app/logout" ng-show="currentUser" style="bottom: 0px; left: 0px; right: 0px; padding: -5px; position: fixed;">
         Sign Out
       </ion-item>
     </ion-footer-bar>
