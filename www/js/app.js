@@ -37,7 +37,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   })
 
   .state('app.search', {
-    url: '/search',
+    url: '/search/:title',
     views: {
       'menuContent': {
         templateUrl: 'js/search/search.template.html',
@@ -55,20 +55,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'js/auth/login.template.html',
-        controller: 'LoginCtrl',
-      }
-    },
-    data: {
-      blockLogin: true,
-      requireLogin: false,
-    }
-  })
-
-  .state('app.forgot_pass', {
-    url: '/forgot_pass',
-    views: {
-      'menuContent': {
-        templateUrl: 'js/auth/forgot_pass.template.html',
         controller: 'LoginCtrl',
       }
     },
