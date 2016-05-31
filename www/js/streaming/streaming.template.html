@@ -1,17 +1,24 @@
 <ion-view view-title="Streaming">
   <ion-content>
+    <div class="row" ng-show="message.status">
+      <div class="alert alert-{{ message.status }}">
+        <p class="text-center text-dark">
+          {{ message.data }}
+        </p>
+      </div>
+    </div>
     <div class="row">
       <div class="col col-50">
         <img class="padding poster" ng-src="{{movie.poster_240x342}}" alt="poster" ng-if="movie.poster_240x342 !== 'N/A'" ng-show="movie"/>
       </div>
-      <div class="col">
+      <div class="col" ng-show="movie">
         <h4 class="padding-horizontal">{{ movie.title }}</h4>
         <p class="padding-horizontal">
           <strong>Rated:</strong> {{ movie.rating }}<br />
         </p>
       </div>
     </div>
-    <div class="details">
+    <div class="details" ng-show="movie">
       <div ng-show="movie.purchase_web_sources.length">
         <h3>Paid</h3>
         <ul>
