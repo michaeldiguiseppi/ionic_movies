@@ -66,6 +66,11 @@ div.bar.bar-header.item-input-inset {
   color: #999999;
 }
 
+.centered {
+  margin: 0 auto;
+  padding: 5% 15%;
+}
+
 .indented {
   text-indent: 50px;
 }
