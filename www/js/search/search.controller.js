@@ -1,9 +1,10 @@
 (function() {
   angular.module('starter.controllers')
-    .controller('SearchCtrl', ['$scope', 'httpService', '$ionicScrollDelegate', '$rootScope', '$ionicLoading',
-    function($scope, httpService, $ionicScrollDelegate, $rootScope, $ionicLoading) {
+    .controller('SearchCtrl', ['$scope', 'httpService', '$ionicScrollDelegate', '$rootScope', '$ionicLoading', '$stateParams',
+    function($scope, httpService, $ionicScrollDelegate, $rootScope, $ionicLoading, $stateParams) {
       $scope.search = {};
       $scope.message = {};
+
       $scope.findMovie = function() {
         var title = $scope.search.title;
         $ionicLoading.show();
@@ -18,6 +19,11 @@
           $scope.message = {status: 'danger', message: err };
         });
       };
+
+      if ($stateParams.title) {
+        $scope.search.title = $stateParams.title;
+        $scope.findMovie();
+      }
 
       $scope.addCollection = function() {
         var data = $scope.result;
