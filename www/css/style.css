@@ -1,4 +1,41 @@
 /* Empty. Add your own CSS if you like */
+/*dark is class added to ion-content, since ion-conte*/
+/*is made up of multiple pieces and is a pain to style each*/
+.dark {
+  background-color: #272B30 !important;
+  color: #ffffff;
+}
+
+/*Set the background to transparent for ion-item*/
+.dark .item {
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid;
+  border-bottom: 2px solid;
+  border-color: #272B30;
+  color: #F0F1F1;
+}
+
+/*Changes the border for the last item*/
+.dark .item:last-child {
+  border-bottom: 1px solid #333333;
+}
+
+/*Ion-item adds item-complex and an inner div, .item-content*/
+/* this needs to be transparent too, but doesnt need borders*/
+.dark .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+
+/*Just makes the type white*/
+.dark h2,
+.dark h3,
+.dark p,
+.dark a {
+  color: #F0F1F1;
+}
+
 .alert {
   border-radius: 0px;
   padding: 15px;
@@ -19,6 +56,14 @@ div.bar.bar-header.item-input-inset {
 
 .text-center {
   text-align: center;
+}
+
+.text-dark {
+  color: black;
+}
+
+.text-light {
+  color: #999999;
 }
 
 .indented {
