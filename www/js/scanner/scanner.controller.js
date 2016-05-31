@@ -18,14 +18,6 @@
       $scope.$on('$destroy', function() {
         $scope.modal.remove();
       });
-      // Execute action on hide modal
-      $scope.$on('modal.hidden', function() {
-        // Execute action
-      });
-      // Execute action on remove modal
-      $scope.$on('modal.removed', function() {
-        // Execute action
-      });
       $cordovaBarcodeScanner.scan()
       .then(function (result) {
         httpService.getMovieTitle(result.text)
@@ -34,7 +26,8 @@
           $scope.openModal();
         })
         .catch(function (error) {
-          alert('Scanning failed: ' + error);
+          console.log(error.data);
+          alert('Scanning failed: ' + error.data.message);
         });
       });
     };

@@ -6,7 +6,9 @@
     Results for {{ data.Title }}
     <hr />
     <div ng-if="message" class="alert alert-{{ message.status }}">
-      {{ message.data }}
+      <p class="text-center text-dark">
+        {{ message.data }}
+      </p>
     </div>
     <img ng-src="{{data.Poster}}" alt="poster" />
     <ul>
