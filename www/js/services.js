@@ -27,6 +27,12 @@
             url: baseUrl + '/movies/' + upc,
           });
         },
+        getRelated: function(id, type) {
+          return $http({
+            method: 'GET',
+            url: baseUrl + '/movies/related/' + id + '/' + type
+          });
+        },
         addMovie: function(data) {
           return $http({
             method: 'POST',
