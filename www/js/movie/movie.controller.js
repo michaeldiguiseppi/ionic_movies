@@ -35,6 +35,9 @@
                 $ionicSlideBoxDelegate.update();
                 $scope.$apply();
             });
+        }).catch(function(err) {
+          $ionicLoading.hide();
+          $scope.message = {status: 'danger', data: 'There was a problem.  Please try again or try another movie.'};
         });
       };
     }]);
