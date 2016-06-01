@@ -153,6 +153,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       }
     })
 
+    .state('app.wishlist', {
+      url: '/wishlist',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'js/wishlist/wishlist.template.html',
+          controller: 'WishlistCtrl'
+        }
+      },
+      data: {
+        requireLogin: true,
+        blockLogin: false,
+      }
+    })
+
     .state('app.random', {
       url: '/random',
       views: {
@@ -173,6 +188,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       'menuContent': {
         templateUrl: 'js/movie/movie.template.html',
         controller: 'MovieCtrl'
+      }
+    },
+    data: {
+      requireLogin: true,
+      blockLogin: false,
+    }
+  })
+
+  .state('app.single_wish', {
+    url: '/wishlist/:title',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/wishlist/wishlist_single.template.html',
+        controller: 'WishlistCtrl'
       }
     },
     data: {
