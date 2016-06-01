@@ -3,10 +3,10 @@
     .service('httpService', ['$http', '$rootScope', function($http, $rootScope) {
       var baseUrl = 'http://mmdb-api.herokuapp.com';
       return {
-        getAllMovies: function() {
+        getAllMovies: function(location) {
           return $http({
             method: 'GET',
-            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movies',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movies/'+location,
           });
         },
         getOneMovie: function(title) {
@@ -33,18 +33,17 @@
             url: baseUrl + '/movies/related/' + id + '/' + type
           });
         },
-        addMovie: function(data) {
+        addMovie: function(data, location) {
           return $http({
             method: 'POST',
-            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/add',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/add/'+location,
             data: data,
           });
         },
-        deleteMovie: function(id) {
-          // "/:userId/movies/:movieId"
+        deleteMovie: function(id, location) {
           return $http({
             method: 'PUT',
-            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/'+id+'/delete',
+            url: baseUrl + '/users/'+$rootScope.currentUser._id+'/movie/'+id+'/delete/'+location,
           });
         }
       };
