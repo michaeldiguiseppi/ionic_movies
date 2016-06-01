@@ -23,7 +23,7 @@
       .then(function (result) {
         httpService.getMovieTitle(result.text)
         .then(function (data) {
-          $scope.data = data.data;
+          $scope.movie = data.data;
           $scope.openModal();
         })
         .catch(function (error) {
@@ -33,9 +33,9 @@
     };
 
     $scope.addCollection = function() {
-      var data = $scope.data;
+      var data = $scope.movie;
       $ionicLoading.show();
-      httpService.addMovie(data)
+      httpService.addMovie(data, 'collection')
       .then(function() {
         $ionicLoading.hide();
         $scope.message = {status: 'success', data: 'Movie added successfully.'};
@@ -47,14 +47,13 @@
     };
 
     $scope.addWishlist = function() {
-      var data = $scope.data;
+      var data = $scope.movie;
       $ionicLoading.show();
       httpService.addMovie(data, 'wishlist')
       .then(function() {
         $ionicLoading.hide();
         $scope.message = {status: 'success', data: 'Movie added successfully.'};
-        $scope.result = null;
-        $ionicScrollDelegate.scrollTop();
+        $scope.closeModal();
       }).catch(function(err) {
         $ionicLoading.hide();
         $scope.message = {status: 'danger', data: 'Something went wrong. Please try again.' };
