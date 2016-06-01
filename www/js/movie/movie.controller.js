@@ -13,14 +13,34 @@
         $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
       });
 
-      $scope.delete = function(id) {
-        httpService.deleteMovie(id)
+      $scope.delete = function(id, location) {
+        httpService.deleteMovie(id, location)
         .then(function(data) {
-          $state.go('app.collection');
+          if (location === 'collection') {
+            $state.go('app.collection');
+          } else {
+            $state.go('app.wishlist');
+          }
         }).catch(function(err) {
           $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
         });
       };
+
+      $scope.addCollection = function() {
+        var data = $scope.movie;
+        $ionicLoading.show();
+        httpService.addMovie(data, 'collection')
+        .then(function() {
+          $ionicLoading.hide();
+          $scope.message = {status: 'success', data: 'Movie added successfully.'};
+          $scope.result = null;
+          $ionicScrollDelegate.scrollTop();
+        }).catch(function(err) {
+          $ionicLoading.hide();
+          $scope.message = {status: 'danger', data: err };
+        });
+      };
+
 
       $scope.doSearch = function(id, type) {
         $ionicLoading.show();

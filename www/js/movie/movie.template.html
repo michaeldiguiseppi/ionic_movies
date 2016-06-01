@@ -53,7 +53,7 @@
     <div class="buttons">
       <button class="button button-block button-calm padding" ng-click="doSearch(movie.imdbID, movie.Type)" ng-show="!related.results">Get Related Titles</button>
       <a class="button button-block button-royal padding" href="#/app/streaming/{{movie.Type}}/{{movie.Type}}/{{movie.imdbID}}">Find Streaming Sources</a>
-      <button class="button button-block button-assertive padding" ng-click="delete(movie.imdbID)">Remove from Collection</button>
+      <button class="button button-block button-assertive padding" ng-click="delete(movie.imdbID, 'collection')">Remove from Collection</button>
     </div>
   </ion-content>
 </ion-view>
