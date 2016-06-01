@@ -85,3 +85,7 @@ img.poster {
 .details {
   margin: 15px;
 }
+
+input[type="search"] {
+  color: black;
+}
