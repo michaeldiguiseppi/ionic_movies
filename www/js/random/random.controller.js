@@ -5,7 +5,7 @@
       $scope.getRandom = function() {
         $scope.movie = {};
         $ionicLoading.show();
-        httpService.getAllMovies().then(function(data) {
+        httpService.getAllMovies('collection').then(function(data) {
           var random = Math.floor(Math.random() * data.data.length);
           console.log(data);
           console.log(random);
