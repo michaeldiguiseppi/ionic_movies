@@ -28,7 +28,22 @@
       $scope.addCollection = function() {
         var data = $scope.result;
         $ionicLoading.show();
-        httpService.addMovie(data)
+        httpService.addMovie(data, 'collection')
+        .then(function() {
+          $ionicLoading.hide();
+          $scope.message = {status: 'success', data: 'Movie added successfully.'};
+          $scope.result = null;
+          $ionicScrollDelegate.scrollTop();
+        }).catch(function(err) {
+          $ionicLoading.hide();
+          $scope.message = {status: 'danger', data: err };
+        });
+      };
+
+      $scope.addWishlist = function() {
+        var data = $scope.result;
+        $ionicLoading.show();
+        httpService.addMovie(data, 'wishlist')
         .then(function() {
           $ionicLoading.hide();
           $scope.message = {status: 'success', data: 'Movie added successfully.'};

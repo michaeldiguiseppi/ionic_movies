@@ -42,8 +42,9 @@
           </div>
         </div>
       </div>
-      <button class="button button-block button-balanced" ng-click="addCollection()" ng-show="currentUser">Add to Collection</button>
-      <a class="button button-block button-balanced" href="#/app/login" ng-show="!currentUser">Log in to add this to your collection.</a>
+      <button class="button button-block button-balanced padding" ng-click="addCollection()" ng-show="currentUser">Add to Collection</button>
+      <button class="button button-block button-royal padding" ng-click="addWishlist()" ng-show="currentUser">Add to Wishlist</button>
+      <a class="button button-block button-balanced padding" href="#/app/login" ng-show="!currentUser">Log in to add this to your collection.</a>
     </div>
   </ion-content>
 </ion-view>
