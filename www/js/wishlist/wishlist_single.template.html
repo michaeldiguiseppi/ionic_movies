@@ -1,0 +1,58 @@
+<ion-view view-title="Details" ng-init="getWishlist()">
+  <ion-content>
+    <div class="row" ng-show="message.status">
+      <div class="alert alert-{{message.status}} col">
+        <p class="text-center text-dark">
+          {{ message.data }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-50">
+        <img class="padding poster" ng-src="{{movie.Poster}}" alt="poster" ng-if="movie.Poster !== 'N/A'" ng-show="movie"/>
+      </div>
+      <div class="col">
+        <h4 class="padding-horizontal">{{ movie.Title }}</h4>
+        <p class="padding-horizontal">
+          <strong>Rated:</strong> {{ movie.Rated }}<br />
+          <strong>Runtime:</strong> {{ movie.Runtime }}<br />
+          <strong>Cast:</strong> {{ movie.Actors }}<br />
+          <strong>Genres:</strong> {{ movie.Genre }}<br />
+          <strong>IMDB Rating:</strong> {{ movie.imdbRating }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="details">
+        <div class="col">
+          <p class="indented">
+            {{ movie.Plot }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div ng-show="related">
+      <div class="row">
+        <h3 class="text-light col col-50 col-offset-25 text-center">Related</h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="related">
+          <ion-slide-box show-pager="false">
+              <ion-slide ng-repeat="movie in related.results">
+                <h4 class="text-center">{{movie.title}}</h4>
+                <a href="#/app/search/{{movie.title}}">
+                  <img class="centered" ng-src="{{movie.poster_240x342}}" alt="movie_poster" ng-if="movie.poster_240x342">
+                  <img class="centered" ng-src="{{movie.artwork_304x171}}" alt="movie_poster" ng-if="movie.artwork_304x171">
+                </a>
+              </ion-slide>
+          </ion-slide-box>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="button button-block button-royal padding" ng-click="addCollection()">Add to Collection</button>
+      <button class="button button-block button-assertive padding" ng-click="delete(movie.imdbID, 'wishlist')">Remove from Wishlist</button>
+    </div>
+  </ion-content>
+</ion-view>
