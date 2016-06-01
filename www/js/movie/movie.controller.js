@@ -22,8 +22,6 @@
         });
       };
 
-      // TODO: Find API Routes for related movies/shows
-
       $scope.doSearch = function(id, type) {
         $ionicLoading.show();
         httpService.getRelated(id, type).then(function(results) {
