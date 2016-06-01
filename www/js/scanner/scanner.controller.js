@@ -1,6 +1,7 @@
 (function() {
   angular.module('starter.controllers')
-  .controller('ScanCtrl', function ($scope, $cordovaBarcodeScanner, httpService, $ionicModal, $state) {
+  .controller('ScanCtrl', ['$scope', '$cordovaBarcodeScanner', 'httpService', '$ionicModal', '$state', '$ionicLoading',
+    function ($scope, $cordovaBarcodeScanner, httpService, $ionicModal, $state, $ionicLoading) {
     $scope.scan = function () {
       $ionicModal.fromTemplateUrl('js/scanner/result_modal.html', {
         scope: $scope,
@@ -34,13 +35,31 @@
 
     $scope.addCollection = function() {
       var data = $scope.data;
+      $ionicLoading.show();
       httpService.addMovie(data)
       .then(function() {
+        $ionicLoading.hide();
         $scope.message = {status: 'success', data: 'Movie added successfully.'};
         $scope.closeModal();
       }).catch(function(err) {
-        $scope.message = {status: 'danger', data: err };
+        $ionicLoading.hide();
+        $scope.message = {status: 'danger', data: 'Something went wrong. Please try again.' };
       });
     };
-  });
+
+    $scope.addWishlist = function() {
+      var data = $scope.data;
+      $ionicLoading.show();
+      httpService.addMovie(data, 'wishlist')
+      .then(function() {
+        $ionicLoading.hide();
+        $scope.message = {status: 'success', data: 'Movie added successfully.'};
+        $scope.result = null;
+        $ionicScrollDelegate.scrollTop();
+      }).catch(function(err) {
+        $ionicLoading.hide();
+        $scope.message = {status: 'danger', data: 'Something went wrong. Please try again.' };
+      });
+    };
+  }]);
 })();
