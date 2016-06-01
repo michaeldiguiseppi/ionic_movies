@@ -38,7 +38,7 @@
       <hr />
       <div class="row">
         <div class="related">
-          <ion-slide-box show-pager="false">
+          <ion-slide-box show-pager="false" does-continue="true" auto-play="true">
               <ion-slide ng-repeat="movie in related.results">
                 <h4 class="text-center">{{movie.title}}</h4>
                 <a href="#/app/search/{{movie.title}}">
