@@ -2,6 +2,10 @@
   angular.module('starter.controllers')
   .controller('ScanCtrl', ['$scope', '$cordovaBarcodeScanner', 'httpService', '$ionicModal', '$state', '$ionicLoading',
     function ($scope, $cordovaBarcodeScanner, httpService, $ionicModal, $state, $ionicLoading) {
+    $scope.$on('$ionicView.enter', function(e) {
+      $scope.message = {};
+    });
+
     $scope.scan = function () {
       $ionicModal.fromTemplateUrl('js/scanner/result_modal.html', {
         scope: $scope,
@@ -15,7 +19,6 @@
       $scope.closeModal = function() {
         $scope.modal.hide();
       };
-      // Cleanup the modal when we're done with it!
       $scope.$on('$destroy', function() {
         $scope.modal.remove();
       });
