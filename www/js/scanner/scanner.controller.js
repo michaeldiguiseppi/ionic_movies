@@ -27,8 +27,7 @@
           $scope.openModal();
         })
         .catch(function (error) {
-          console.log(error.data);
-          alert('Scanning failed: ' + error.data.message);
+          $scope.message = {status: 'danger', data: 'Something went wrong. Please try again.' };
         });
       });
     };

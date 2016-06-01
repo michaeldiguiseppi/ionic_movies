@@ -67,8 +67,10 @@ div.bar.bar-header.item-input-inset {
 }
 
 .centered {
-  margin: 0 auto;
-  padding: 5% 15%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 5%;
 }
 
 .indented {
