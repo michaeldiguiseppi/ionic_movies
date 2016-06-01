@@ -4,7 +4,7 @@
       function ($scope, httpService, $ionicLoading) {
         $scope.getMovies = function() {
           $ionicLoading.show();
-          httpService.getAllMovies()
+          httpService.getAllMovies('collection')
           .then(function(data) {
             $ionicLoading.hide();
             $scope.movies = data.data;
@@ -15,7 +15,7 @@
         };
 
         $scope.delete = function(id) {
-          httpService.deleteMovie(id)
+          httpService.deleteMovie(id, 'collection')
           .then(function(data) {
             $scope.getMovies();
           }).catch(function(err) {
