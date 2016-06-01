@@ -14,6 +14,7 @@
         $scope.modal = modal;
       });
       $scope.openModal = function() {
+        $scope.message = {};
         $scope.modal.show();
       };
       $scope.closeModal = function() {
