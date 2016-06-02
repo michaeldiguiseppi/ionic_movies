@@ -13,7 +13,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
+    }
+    // check if the splashscreen plugin exists
+    if (navigator && navigator.splashscreen) {
+      // hide the splashscreen 500ms after the view loads to give content time to load
+      setTimeout(function() {
+        navigator.splashscreen.hide();
+      }, 500);
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -216,13 +222,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 angular.module('starter')
   .run(function($rootScope, $state, $window) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+      // set up requireLogin and blockLogin for routes.
       var requireLogin = toState.data.requireLogin;
       var blockLogin = toState.data.blockLogin;
+      // set the current user into the rootScope.
       $rootScope.currentUser = JSON.parse($window.localStorage.getItem('user'));
+      // if the route requires login and there isn't a user, redirect to the login route.
       if (requireLogin && !$rootScope.currentUser) {
         event.preventDefault();
         $state.go('app.login');
       }
+      // if the route is blocked while logged in and there is a user, redirect to the collection.
       if (blockLogin && $rootScope.currentUser) {
         event.preventDefault();
         $state.go('app.collection');
