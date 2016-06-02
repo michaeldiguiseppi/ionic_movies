@@ -90,6 +90,6 @@ input[type="search"] {
   color: black;
 }
 
-.item-complex .item-content {
+ion-footer-bar .item-complex .item-content {
   background-color: #272B30;
 }
