@@ -32,7 +32,7 @@
         <h3>Free</h3>
         <ul>
           <li ng-repeat="source in movie.free_web_sources">
-            <a class="button button-block margin-horizontal" ng-click="GoToLink(source.link)">{{ source.display_name }}</a>
+            <a class="button button-block margin-horizontal" ng-click="GoToLink(source.link)" ng-show="source.display_name != 'Youtube'">{{ source.display_name }}</a>
           </li>
         </ul>
       </div>

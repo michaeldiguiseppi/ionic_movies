@@ -19,7 +19,6 @@
         });
 
         $scope.GoToLink = function(url) {
-          console.log(url);
           window.open(url,'_system');
         };
 
