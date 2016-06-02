@@ -45,7 +45,6 @@
       $scope.doSearch = function(id, type) {
         $ionicLoading.show();
         httpService.getRelated(id, type).then(function(results) {
-            console.log(results);
             $ionicLoading.hide();
             $scope.related = results.data;
             setTimeout(function() {
