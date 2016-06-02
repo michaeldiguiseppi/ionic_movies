@@ -26,7 +26,6 @@
         $scope.addCollection = function() {
           var data = $scope.movie;
           $ionicLoading.show();
-          console.log(data);
           httpService.addMovie(data, 'collection')
           .then(function() {
             $ionicLoading.hide();

@@ -7,8 +7,6 @@
         $ionicLoading.show();
         httpService.getAllMovies('collection').then(function(data) {
           var random = Math.floor(Math.random() * data.data.length);
-          console.log(data);
-          console.log(random);
           setTimeout(function() {
             $ionicLoading.hide();
             $scope.movie = data.data[random];
