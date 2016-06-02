@@ -17,9 +17,9 @@
 }
 
 /*Changes the border for the last item*/
-.dark .item:last-child {
+/*.dark .item:last-child {
   border-bottom: 1px solid #333333;
-}
+}*/
 
 /*Ion-item adds item-complex and an inner div, .item-content*/
 /* this needs to be transparent too, but doesnt need borders*/
@@ -88,4 +88,8 @@ img.poster {
 
 input[type="search"] {
   color: black;
+}
+
+.item-complex .item-content {
+  background-color: #272B30;
 }

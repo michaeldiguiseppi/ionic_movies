@@ -1,6 +1,6 @@
 <ion-view view-title="Scan Barcode">
   <ion-content>
-    <div ng-if="message" class="alert alert-{{message.status}}">
+    <div ng-show="message.status" class="alert alert-{{message.status}}">
       <p class="text-center text-dark">
         {{ message.data }}
       </p>
