@@ -7,6 +7,7 @@ Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Appli
 #### Barcode Scanner
   - Scan barcodes on the backs of DVD cases to search and add the movie to your collection.
   - Can also search by Title if the barcode isn't found.
+
 #### Title Search
   - An OMDBApi title search.
   - Search by the movie or show title, and then add the movie/show to either your collection or your wishlist.
