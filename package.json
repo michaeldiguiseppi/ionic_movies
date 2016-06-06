@@ -1,8 +1,7 @@
 {
   "name": "MMDB",
   "version": "1.0.4",
-  "description": "A movie cataloguing and reference application, that also enables users to
-  find streaming sources for their favorite movies and TV shows.",
+  "description": "A movie cataloguing and reference application, that also enables users to find streaming sources for their favorite movies and TV shows.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
