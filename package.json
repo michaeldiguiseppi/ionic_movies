@@ -1,6 +1,6 @@
 {
   "name": "MMDB",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A movie cataloguing and reference application, that also enables users to
   find streaming sources for their favorite movies and TV shows.",
   "dependencies": {
