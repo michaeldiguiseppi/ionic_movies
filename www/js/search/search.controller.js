@@ -16,7 +16,7 @@
           $scope.search = {};
         }).catch(function(err) {
           $ionicLoading.hide();
-          $scope.message = {status: 'danger', message: err };
+          $scope.message = {status: 'danger', data: err.data.data };
         });
       };
 
