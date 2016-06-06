@@ -24,3 +24,14 @@ Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Appli
   - A user can add movies to their wishlist that they hope to own or want to own.
   - The wishlist is a separate list from the collection.
   - Users can then move movies from their wishlist to their collection once they own them.
+
+
+### Installation Instructions
+  1. Make sure you have Ionic and Cordova installed with `npm install -g cordova ionic`.
+  1. Fork and Clone this repo.
+  1. `cd ionic_movies`
+  1. `npm install`
+  1. `ionic state restore` will install all the necessary plugins and platforms.
+  1. `ionic build ios` to build the app for iOS.
+  1. `open platforms/ios/MMDB.xcodeproj` will open the project in xCode.
+  1. Once in xCode, select your device in the upper right corner and click the play button.  This will install the app onto your device or on an iOS emulator so you can use the app.
