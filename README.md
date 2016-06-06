@@ -38,4 +38,4 @@ Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Appli
   1. `ionic state restore` will install all the necessary plugins and platforms.
   1. `ionic build ios` to build the app for iOS.
   1. `open platforms/ios/MMDB.xcodeproj` will open the project in xCode.
-  1. Once in xCode, select your device in the upper right corner and click the play button.  This will install the app onto your device or on an iOS emulator so you can use the app.
+  1. Once in xCode, select your device in the upper left corner and click the play button.  This will install the app onto your device or on an iOS emulator so you can use the app.
