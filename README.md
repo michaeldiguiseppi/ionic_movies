@@ -27,6 +27,9 @@ Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Appli
 
 
 ### Installation Instructions
+  **If you are on Android, you can find the app on the [Play Store](https://play.google.com/store/apps/details?id=xyz.mikedee.ionic).**
+
+  **Otherwise do the following:**
   1. Make sure you have Ionic and Cordova installed with `npm install -g cordova ionic`.
   1. Fork and Clone this repo.
   1. `cd ionic_movies`
