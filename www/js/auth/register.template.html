@@ -1,24 +1,33 @@
 <ion-view view-title="Register">
   <ion-content>
-    <form ng-submit="doRegister()">
+    <form ng-submit="doRegister()" name="registerForm" novalidate>
       <div ng-if="message.status" class="alert alert-{{message.status}}">
         <p class="center-text">{{ message.data }}</p>
       </div>
       <div class="list">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{ 'has-error-lr' : registerForm.username.$invalid, 'valid-lr': registerForm.username.$valid}">
           <span class="input-label text-light">Username</span>
-          <input type="text" ng-model="registerData.username">
+          <input type="text" ng-model="registerData.username" required ng-minlength="5" name="username">
         </label>
-        <label class="item item-input">
+        <div class="form-errors" ng-messages="registerForm.username.$error" ng-show="registerForm.username.$error">
+            <div class="form-error" ng-message="minlength">This field must be at least 5 characters</div>
+        </div>
+        <label class="item item-input" ng-class="{ 'has-error-lr' : registerForm.email.$invalid, 'valid-lr': registerForm.email.$valid}">
           <span class="input-label text-light">Email</span>
-          <input type="text" ng-model="registerData.email">
+          <input type="email" ng-model="registerData.email" required name="email">
         </label>
-        <label class="item item-input">
+        <div class="form-errors" ng-messages="registerForm.email.$error" ng-show="registerForm.email.$error">
+        </div>
+        <label class="item item-input" ng-class="{ 'has-error-lr' : registerForm.password.$invalid, 'valid-lr' : registerForm.password.$valid}">
           <span class="input-label text-light">Password</span>
-          <input type="password" ng-model="registerData.password">
+          <input type="password" ng-model="registerData.password" ng-minlength="7" required ng-maxlength="24" name="password">
         </label>
+        <div class="form-errors" ng-messages="registerForm.password.$error" ng-show="registerForm.password.$error">
+            <div class="form-error" ng-message="minlength">This field must be at least 7 characters</div>
+            <div class="form-error" ng-message="maxlength">This field must be less than 24 characters</div>
+        </div>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Register</button>
+          <button class="button button-block button-positive" type="submit" ng-disabled="registerForm.$invalid">Register</button>
         </label>
       </div>
     </form>

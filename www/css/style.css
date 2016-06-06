@@ -36,6 +36,7 @@
   color: #F0F1F1;
 }
 
+/*  Styling the error boxes */
 .alert {
   border-radius: 0px;
   padding: 15px;
@@ -54,18 +55,22 @@ div.bar.bar-header.item-input-inset {
   margin-top: -20px;
 }
 
+/* Basic text centering */
 .text-center {
   text-align: center;
 }
 
+/* Coloring dark text */
 .text-dark {
   color: black;
 }
 
+/* Coloring light text */
 .text-light {
   color: #999999;
 }
 
+/* Styling for images. */
 .centered {
   margin-left: auto;
   margin-right: auto;
@@ -73,14 +78,15 @@ div.bar.bar-header.item-input-inset {
   padding: 5%;
 }
 
-.indented {
-  text-indent: 50px;
-}
-
 img.poster {
   height: 250px;
   width: 180px;
 }
+
+.indented {
+  text-indent: 50px;
+}
+
 
 .details {
   margin: 15px;
@@ -92,4 +98,30 @@ input[type="search"] {
 
 ion-footer-bar .item-complex .item-content {
   background-color: #272B30;
+}
+
+/** Styling for the username field **/
+label.item.has-error {
+  border-bottom: 4px solid red;
+}
+
+/** Styling for the password field when an error exists**/
+label.item.has-error-lr {
+  border-left: 4px solid red;
+  border-right: 4px solid red;
+}
+
+/** Styling for the password field when an error has been resolved**/
+label.item.valid-lr {
+  border-left: 4px solid green;
+  border-right: 4px solid green;
+}
+
+/** Styling for the error text and container **/
+.form-errors {
+  margin: 5px 0
+}
+.form-error {
+  padding: 2px 0 2px 16px;
+  color: red;
 }

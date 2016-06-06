@@ -1,20 +1,26 @@
 <ion-view view-title="Login">
   <ion-content>
-    <form ng-submit="doLogin()">
+    <form ng-submit="doLogin()" name="loginForm" novalidate>
       <div ng-if="message.status" class="alert alert-{{message.status}}">
         <p class="text-center text-dark">{{ message.data }}</p>
       </div>
       <div class="list">
-        <label class="item item-input">
+        <label class="item item-input" ng-class="{ 'has-error-lr' : loginForm.email.$invalid, 'valid-lr': loginForm.email.$valid}">
           <span class="input-label text-light">Email</span>
-          <input type="text" ng-model="loginData.email">
+          <input type="email" ng-model="loginData.email" name="email" required>
         </label>
-        <label class="item item-input">
+        <div class="form-errors" ng-messages="loginForm.email.$error" ng-show="loginForm.email.$error">
+        </div>
+        <label class="item item-input" ng-class="{ 'has-error-lr' : loginForm.password.$invalid, 'valid-lr' : loginForm.password.$valid}">
           <span class="input-label text-light">Password</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" ng-model="loginData.password" name="password" required ng-minlength="7" ng-maxlength="24">
         </label>
+        <div class="form-errors" ng-messages="loginForm.password.$error" ng-show="loginForm.password.$error">
+            <div class="form-error" ng-message="minlength">This field must be at least 7 characters</div>
+            <div class="form-error" ng-message="maxlength">This field must be less than 24 characters</div>
+        </div>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+          <button class="button button-block button-positive" type="submit" ng-disabled="loginForm.$invalid">Log in</button>
         </label>
       </div>
     </form>
