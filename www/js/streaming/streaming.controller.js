@@ -6,7 +6,6 @@
       httpService.getStreamingSources($stateParams.id, $stateParams.type)
         .then(function(data) {
           $ionicLoading.hide();
-          console.log(data);
           if (data.data.results) {
             $scope.message = {status: 'danger', data: 'There don\'t appear to be any streaming sources available at this time.  Please check back later.'};
           } else {
@@ -21,6 +20,5 @@
         $scope.GoToLink = function(url) {
           window.open(url,'_system');
         };
-
     }]);
 })();

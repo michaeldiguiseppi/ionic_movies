@@ -5,33 +5,32 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessages'])
-
-.run(function($ionicPlatform, $ionicPopup) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    // check if the splashscreen plugin exists
-    if (navigator && navigator.splashscreen) {
-      // hide the splashscreen 500ms after the view loads to give content time to load
-      setTimeout(function() {
-        navigator.splashscreen.hide();
-      }, 500);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+  .run(function($ionicPlatform, $ionicPopup) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+      // check if the splashscreen plugin exists
+      if (navigator && navigator.splashscreen) {
+        // hide the splashscreen 500ms after the view loads to give content time to load
+        setTimeout(function() {
+          navigator.splashscreen.hide();
+        }, 500);
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     cache: false,
@@ -41,7 +40,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       blockLogin: false,
     }
   })
-
   .state('app.search', {
     url: '/search/:title',
     views: {
@@ -55,7 +53,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       blockLogin: false,
     }
   })
-
   .state('app.login', {
     url: '/login',
     views: {
@@ -69,7 +66,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       requireLogin: false,
     }
   })
-
   .state('app.logout', {
     url: '/logout',
     views: {
@@ -88,7 +84,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       blockLogin: false,
     }
   })
-
   .state('app.register', {
     url: '/register',
     views: {
@@ -102,21 +97,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       requireLogin: false,
     }
   })
-
-    .state('app.stream_series', {
-      url: '/streaming/series/:type/:id',
-      views: {
-        'menuContent': {
-          templateUrl: 'js/streaming/streaming_series.template.html',
-          controller: 'StreamCtrl',
-        }
-      },
-      data: {
-        requireLogin: true,
-        blockLogin: false,
+  .state('app.stream_series', {
+    url: '/streaming/series/:type/:id',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/streaming/streaming_series.template.html',
+        controller: 'StreamCtrl',
       }
-    })
-
+    },
+    data: {
+      requireLogin: true,
+      blockLogin: false,
+    }
+  })
   .state('app.stream_movie', {
     url: '/streaming/movie/:type/:id',
     views: {
@@ -130,64 +123,60 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       blockLogin: false,
     }
   })
-
   .state('app.scan', {
-      url: '/scan',
-      views: {
-        'menuContent': {
-          templateUrl: 'js/scanner/scanner.template.html',
-          controller: 'ScanCtrl',
-        }
-      },
-      data: {
-        requireLogin: false,
-        blockLogin: false,
+    url: '/scan',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/scanner/scanner.template.html',
+        controller: 'ScanCtrl',
       }
-    })
-    .state('app.collection', {
-      url: '/collection',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'js/collection/collection.template.html',
-          controller: 'CollectionCtrl'
-        }
-      },
-      data: {
-        requireLogin: true,
-        blockLogin: false,
+    },
+    data: {
+      requireLogin: false,
+      blockLogin: false,
+    }
+  })
+  .state('app.collection', {
+    url: '/collection',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'js/collection/collection.template.html',
+        controller: 'CollectionCtrl'
       }
-    })
-
-    .state('app.wishlist', {
-      url: '/wishlist',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'js/wishlist/wishlist.template.html',
-          controller: 'WishlistCtrl'
-        }
-      },
-      data: {
-        requireLogin: true,
-        blockLogin: false,
+    },
+    data: {
+      requireLogin: true,
+      blockLogin: false,
+    }
+  })
+  .state('app.wishlist', {
+    url: '/wishlist',
+    cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'js/wishlist/wishlist.template.html',
+        controller: 'WishlistCtrl'
       }
-    })
-
-    .state('app.random', {
-      url: '/random',
-      views: {
-        'menuContent': {
-          templateUrl: 'js/random/random.template.html',
-          controller: 'RandomCtrl'
-        }
-      },
-      data: {
-        requireLogin: true,
-        blockLogin: false,
+    },
+    data: {
+      requireLogin: true,
+      blockLogin: false,
+    }
+  })
+  .state('app.random', {
+    url: '/random',
+    views: {
+      'menuContent': {
+        templateUrl: 'js/random/random.template.html',
+        controller: 'RandomCtrl'
       }
-    })
-
+    },
+    data: {
+      requireLogin: true,
+      blockLogin: false,
+    }
+  })
   .state('app.single', {
     url: '/collection/:title',
     views: {
@@ -201,7 +190,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMessa
       blockLogin: false,
     }
   })
-
   .state('app.single_wish', {
     url: '/wishlist/:title',
     views: {

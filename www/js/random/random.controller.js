@@ -5,16 +5,18 @@
       $scope.getRandom = function() {
         $scope.movie = {};
         $ionicLoading.show();
-        httpService.getAllMovies('collection').then(function(data) {
-          var random = Math.floor(Math.random() * data.data.length);
-          setTimeout(function() {
+        httpService.getAllMovies('collection')
+          .then(function(data) {
+            var random = Math.floor(Math.random() * data.data.length);
+            setTimeout(function() {
+              $ionicLoading.hide();
+              $scope.movie = data.data[random];
+            }, 1000);
+          })
+          .catch(function(err) {
             $ionicLoading.hide();
-            $scope.movie = data.data[random];
-          }, 1000);
-        }).catch(function(err) {
-          $ionicLoading.hide();
-          $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
-        });
+            $scope.message = {status: 'danger', data: 'Something went wrong.  Please try again.'};
+          });
       };
     }]);
 })();
