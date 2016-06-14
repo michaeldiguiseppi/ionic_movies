@@ -1,6 +1,6 @@
 # MMDB v2
 
-Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Application. It is an application built in Ionic, powered by an [API back-end](www.github.com/michaeldiguiseppi/capstone_api) that I built also.  For data persistence, I used MongoDB and Mongoose.
+Mike's Movie Database v2.0 is the second iteration of my Movie Cataloguing Application. It is an application built in Ionic, powered by an [API back-end](http://www.github.com/michaeldiguiseppi/capstone_api) that I built also.  For data persistence, I used MongoDB and Mongoose.
 
 ### Installation Instructions
   **If you are on Android, you can find the app on the [Play Store](https://play.google.com/store/apps/details?id=xyz.mikedee.ionic).**
