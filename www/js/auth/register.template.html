@@ -22,6 +22,11 @@
           <span class="input-label text-light">Password</span>
           <input type="password" ng-model="registerData.password" ng-minlength="7" required ng-maxlength="24" name="password">
         </label>
+        <br />
+        <div style="text-align: center">
+          <span style="display: inline-block" class="input-label text-light">Receive emails: </span>
+          <input type="checkbox" ng-model="registerData.allow_emails" name="allow_emails" />
+        </div>
         <div class="form-errors" ng-messages="registerForm.password.$error" ng-show="registerForm.password.$error">
             <div class="form-error" ng-message="minlength">This field must be at least 7 characters</div>
             <div class="form-error" ng-message="maxlength">This field must be less than 24 characters</div>

@@ -22,7 +22,7 @@
           $ionicLoading.hide();
           $scope.message = {
             status: 'danger',
-            data: 'Email and/or password are incorrect.  Please try again.'
+            data: 'Something went wrong. Please try again.'
           };
         });
     };
